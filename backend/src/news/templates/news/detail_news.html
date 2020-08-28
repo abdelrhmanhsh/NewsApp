@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	.card {
+		max-width: 700px;
+	}
+
+	.container {
+		padding: 20px;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="card m-auto">
+			<img class="card-img-top" src="{{news_post.image.url}}">
+			<div class="card-body mt-2 mb-2">
+				<h2 class="card-title">{{news_post.title}}</h2>
+				<p class="card-text">{{news_post.body|safe}}</p>
+			</div>
+			<div class="card-footer text-muted">
+				Updated on {{news_post.date_updated}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

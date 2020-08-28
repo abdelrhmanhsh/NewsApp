@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+	.news-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+	.left-column{
+		padding:0px;
+	}
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+
+		<!-- news feed -->
+		<div class="left-column col-lg-7 offset-lg-1">
+
+			<!-- News posts-->
+			{% if news_posts %}
+
+				{% for post in news_posts %}
+				<div class="news-post-container">
+					{% include 'news/snippets/news_post_snippet.html' with news_post=post %}
+				</div>
+			{% endfor %}
+
+			{% else %}
+				
+				<div class="news-post-container">
+					{% include 'news/snippets/news_post_snippet.html' with query=query %}
+				</div>
+
+			{% endif %}
+
+			<!-- End News posts-->
+
+		<!-- Pagination -->
+		{% include 'news/snippets/news_post_pagination.html' with news_posts=news_posts %}
+
+		</div>
+		<!-- end news feed -->
+
+	</div>
+</div>
+
+{% endblock content %}
